@@ -1,10 +1,20 @@
 #!/bin/bash
 
-#Get the script directory
-SCRIPT_DIR=$(dirname "$0")
+set -euo pipefail
 
-#Copy the folder witht he theme
-sudo cp -r $SCRIPT_DIR/arch-monarch /usr/share/plymouth/themes/
+SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+THEME_DIR="/usr/share/plymouth/themes/arch-win-spinner"
 
-#Apply the theme
-sudo plymouth-set-default-theme -R arch-monarch
+echo "Installing Arch Win Spinner Plymouth theme..."
+
+sudo install -d "$THEME_DIR"
+
+sudo cp -a \
+    "$SCRIPT_DIR/images" \
+    "$SCRIPT_DIR/arch-win-spinner.plymouth" \
+    "$SCRIPT_DIR/arch-win-spinner.script" \
+    "$THEME_DIR/"
+
+sudo plymouth-set-default-theme -R arch-win-spinner
+
+echo "Arch Win Spinner installed and set as the default Plymouth theme."

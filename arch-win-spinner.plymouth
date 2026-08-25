@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Arch Win Spinner
+Description=Monochrome Arch Linux theme with a custom Windows-style animated spinner
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/arch-win-spinner/images
+ScriptFile=/usr/share/plymouth/themes/arch-win-spinner/arch-win-spinner.script
